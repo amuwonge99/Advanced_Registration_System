@@ -1,0 +1,29 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"net"
+)
+
+func main() {
+	addr, err := net.LookupHost("golangbot123.com")
+	if err != nil {
+		var dnsErr *net.DNSError
+		if errors.As(err, &dnsErr) {
+			if dnsErr.Timeout() {
+				fmt.Println("Operation timed out")
+				return
+			}
+			if dnsErr.Temporary() {
+				fmt.Println("Temporary error")
+				return
+			}
+			fmt.Println("Generic DNS error:", err)
+			return
+		}
+		fmt.Println("Generic error:", err)
+		return
+	}
+	fmt.Println(addr)
+}
