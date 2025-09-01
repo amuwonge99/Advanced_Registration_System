@@ -1,6 +1,6 @@
 # User Management System
 
-*Duration:* Approximately 1 full day (for 2 students)
+*Duration:* Approximately 1 full day
 
 *Concepts:*
 - Struct Definition and Usage
